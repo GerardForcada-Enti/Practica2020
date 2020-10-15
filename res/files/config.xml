@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+
+  <enemy name ="Zombie">
+    <vitality>100</vitality>
+    <attack>50</attack>
+    <dps>1.2</dps>
+    <exp>300</exp>
+    <weaponId>1</weaponId>
+    <weaponId>2</weaponId>
+  </enemy>
+
+  <enemy name ="Skeleton">
+    <vitality>80</vitality>
+    <attack>40</attack>
+    <dps>1</dps>
+    <exp>200</exp>
+    <weaponId>3</weaponId>
+  </enemy>
+
+  <enemy name ="Spider">
+    <vitality>70</vitality>
+    <attack>30</attack>
+    <dps>0.8</dps>
+    <exp>250</exp>
+    <weaponId>0</weaponId>
+  </enemy>
+
+  <enemy name ="Enderman">
+    <vitality>150</vitality>
+    <attack>80</attack>
+    <dps>2</dps>
+    <exp>5000</exp>
+    <weaponId>0</weaponId>
+  </enemy>
+
+  <weapon id="0">
+    <type>Fist</type>
+    <range>1</range>
+  </weapon>
+
+  <weapon id="1">
+    <type>Sword</type>
+    <range>2</range>
+  </weapon>
+  
+  <weapon id="2">
+    <type>Axe</type>
+    <range>2</range>
+  </weapon>
+  
+  <weapon id="3">
+    <type>Bow</type>
+    <range>3</range>
+  </weapon>
+  
+</game>

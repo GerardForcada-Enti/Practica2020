@@ -9,6 +9,10 @@
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
+//Speed
+#define SPEED_X 10
+#define SPEED_Y 10
+
 int main(int, char *[])
 {
 	// --- INIT SDL ---
@@ -42,6 +46,11 @@ int main(int, char *[])
 	if (bgTexture == nullptr)
 		throw "Error: bgTexture init";
 	SDL_Rect bgRect{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+	//Cursor
+	SDL_Texture *cursorTexture{ IMG_LoadTexture(m_renderer, "../../res/img/kintoun.png") };
+	SDL_Rect cursorRect{ 0,0,100,50 };
+	SDL_Rect playerRect{ 0,0,100,50 };
 	//-->Animated Sprite ---
 
 	// --- TEXT ---
@@ -65,16 +74,25 @@ int main(int, char *[])
 				if (event.key.keysym.sym == SDLK_ESCAPE)
 					isRunning = false;
 				break;
+			case SDL_MOUSEMOTION:
+				cursorRect.x = event.motion.x + 20;
+				cursorRect.y = event.motion.y + 10;
+				break;
 			default:;
 			}
 		}
 
 		// UPDATE
-
+		playerRect.x += ((cursorRect.x - playerRect.w / 2) - playerRect.x) / SPEED_X;
+		playerRect.y += ((cursorRect.y - playerRect.h / 2) - playerRect.y) / SPEED_Y;
 		// DRAW
 		SDL_RenderClear(m_renderer);
 		//Background
 		SDL_RenderCopy(m_renderer, bgTexture, nullptr, &bgRect);
+		
+		//CURSOR
+		SDL_RenderCopy(m_renderer, cursorTexture, nullptr, &playerRect);
+
 		SDL_RenderPresent(m_renderer);
 	}
 
